@@ -58,6 +58,17 @@ function runSolutions(sourceCount) {
         .then(resolve)
         .catch(reject);
     });
+  }).then(() => {
+    return new Promise((resolve, reject) => {
+
+      const asyncAwaitLogSources = [];
+      for (let i = 0; i < sourceCount; i++) {
+        asyncAwaitLogSources.push(new LogSource());
+      }
+      require("./solution/async-await-sorted-merge")(asyncAwaitLogSources, new Printer())
+        .then(resolve)
+        .catch(reject);
+    });
   });
 }
 
